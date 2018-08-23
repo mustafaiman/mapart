@@ -1,0 +1,44 @@
+#page {
+    margin: 2%;
+}
+#whole-frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    page-break-after: avoid;
+}
+#map-frame {
+    width: 100%;
+    height: 80%;
+}
+.name {
+    font-family: "Garamond", sans-serif;
+    text-align: center;
+    font-size: 300px;
+    color: #777777;
+    font-weight: bold;
+    font-variant: all-petite-caps;
+}
+#city-name {
+
+}
+#state-name {
+    font-size: 150px;
+}
+
+#long-lat {
+    font-size: 75px;
+    color: #dddddd;
+}
+.demo-map {
+    background: #000000;
+}
+a[href^="http://maps.google.com/maps"]{display:none !important}
+a[href^="https://maps.google.com/maps"]{display:none !important}
+
+.gmnoprint a, .gmnoprint span, .gm-style-cc {
+    display:none;
+}
+.gmnoprint div {
+    background:none !important;
+}

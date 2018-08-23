@@ -1,0 +1,27 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="maps_api.js"></script>
+</head>
+<body>
+<div id="page">
+<div id="whole-frame">
+    <div id="map-frame">
+
+    </div>
+</div>
+    <div id="city-name" class="name">İSTANBUL</div>
+    <div id="state-name" class="name">TÜRKİYE</div>
+    <div id="long-lat" class="name">41.02&#176; N, 28.98&#176; W</div>
+</div>
+<script>
+    getApiKey().then(function (apiKey) {
+        var map_frame = document.getElementById('map-frame');
+        var js = document.createElement('script');
+        js.setAttribute('src', 'https://maps.googleapis.com/maps/api/js?key=' + apiKey + '&callback=initMap');
+        map_frame.appendChild(js);
+    });
+
+</script>
+</body>
+</html>

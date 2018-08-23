@@ -1,0 +1,19 @@
+{
+  "name": "mapsart",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rm -rf demo-outputs/*",
+    "istanbul": "node index.js -o demo-outputs/istanbul.png --lat 41.030 --lng 28.997 --zoom 13.8 --city-name İSTANBUL --state-name TÜRKİYE",
+    "lausanne": "node index.js -o demo-outputs/lausanne.png --lat 46.527 --lng 6.6 --zoom 16 --city-name LAUSANNE --state-name SUISSE"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^2.17.1",
+    "dotenv": "^6.0.0",
+    "puppeteer": "^1.7.0"
+  }
+}
