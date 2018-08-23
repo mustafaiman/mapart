@@ -5,16 +5,11 @@ require('dotenv').config();
 
 commander.version('1.0.0')
     .option('-o --out <outputFile>', 'Output file')
-    .option('--lat <lat>', 'Lattitude', parseFloat, 0)
-    .option('--lng <lng>', 'Longtitude', parseFloat, 0)
-    .option('--zoom <zoom>', 'Zoom', parseFloat, 1)
-    .option('--road-color <roadColor>', 'Road color', x => x, '#c6c6c6')
-    .option('--water-color <waterColor>', 'Water color', x => x, '#ffffff')
-    .option('--city-name <cityName>', 'City name')
-    .option('--state-name <stateName>', 'State name')
+    .option('--city <city>', 'JSON file describing the city')
     .parse(process.argv);
 
 const fullpath = 'file:' + path.resolve('template.html');
+const city = require(path.resolve(commander.city));
 
 let outputPath = path.resolve(commander.out);
 
@@ -31,17 +26,25 @@ function getApiKey() {
     return process.env.MAPS_KEY;
 }
 
+function getOrDefault(param, defaultValue) {
+    if (param !== undefined) {
+        return param;
+    } else {
+        return defaultValue;
+    }
+}
+
 function getOptions() {
     return {
         center: {
-            lat: commander.lat,
-            lng: commander.lng
+            lat: city.lat,
+            lng: city.lng
         },
-        zoom: commander.zoom,
-        roadColor: commander.roadColor,
-        waterColor: commander.waterColor,
-        cityName: commander.cityName,
-        stateName: commander.stateName
+        zoom: city.zoom,
+        roadColor: getOrDefault(city.roadColor, '#c6c6c6'),
+        waterColor: getOrDefault(city.waterColor, '#ffffff'),
+        cityName: city.cityName,
+        stateName: city.stateName
     };
 }
 
