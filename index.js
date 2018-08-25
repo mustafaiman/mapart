@@ -44,7 +44,10 @@ function getOptions() {
         roadColor: getOrDefault(city.roadColor, '#c6c6c6'),
         waterColor: getOrDefault(city.waterColor, '#ffffff'),
         cityName: city.cityName,
-        stateName: city.stateName
+        stateName: city.stateName,
+        landscapeColor: getOrDefault(city.landscapeColor, '#eeeeee'),
+        lightTextColor: getOrDefault(city.lightTextColor, '#dddddd'),
+        darkTextColor: getOrDefault(city.darkTextColor, '#777777')
     };
 }
 

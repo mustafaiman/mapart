@@ -3,5 +3,9 @@
   "lng": 28.997,
   "zoom": 13.8,
   "cityName": "İSTANBUL",
-  "stateName": "TÜRKİYE"
+  "stateName": "TÜRKİYE",
+  "roadColor": "#777777",
+  "landscapeColor": "#eeeeee",
+  "lightTextColor": "#eeeeee",
+  "darkTextColor": "#777777"
 }

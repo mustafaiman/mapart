@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm -rf demo-outputs/*",
     "istanbul": "node index.js -o demo-outputs/istanbul.png --city cities/istanbul.json",
-    "lausanne": "node index.js -o demo-outputs/lausanne.png --city cities/lausanne.json"
+    "lausanne": "node index.js -o demo-outputs/lausanne.png --city cities/lausanne.json",
+    "columbus": "node index.js -o demo-outputs/columbus.png --city cities/columbus.json"
   },
   "author": "",
   "license": "ISC",
