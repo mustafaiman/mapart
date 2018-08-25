@@ -8,6 +8,7 @@
     "clean": "rm -rf demo-outputs/*",
     "istanbul": "node index.js -o demo-outputs/istanbul.png --city cities/istanbul.json",
     "lausanne": "node index.js -o demo-outputs/lausanne.png --city cities/lausanne.json",
+    "ankara": "node index.js -o demo-outputs/ankara.png --city cities/ankara.json",
     "columbus": "node index.js -o demo-outputs/columbus.png --city cities/columbus.json"
   },
   "author": "",
