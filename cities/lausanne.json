@@ -4,8 +4,8 @@
   "zoom": 16,
   "cityName": "LAUSANNE",
   "stateName": "SUISSE",
-  "roadColor": "#ea4661",
   "landscapeColor": "#eabfc9",
   "lightTextColor": "#eabfc9",
+  "roadColor": "#ea4661",
   "darkTextColor": "#ea4661"
 }

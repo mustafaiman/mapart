@@ -79,7 +79,7 @@ function initMap() {
                 }
             ]
         });
-        document.getElementById('long-lat').innerText=options.center.lat + '\u00B0 ' + options.center.lng + '\u00B0'
+        document.getElementById('long-lat').innerText=options.dmsLat + ' ' + options.dmsLng;
         document.getElementById('long-lat').style.color=options.lightTextColor;
         document.getElementById('city-name').innerText=options.cityName;
         document.getElementById('city-name').style.color=options.darkTextColor;

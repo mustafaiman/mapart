@@ -1,6 +1,7 @@
 const pup = require('puppeteer');
 const path = require('path');
 const commander = require('commander');
+const gps = require('gps-util');
 require('dotenv').config();
 
 commander.version('1.0.0')
@@ -47,7 +48,9 @@ function getOptions() {
         stateName: city.stateName,
         landscapeColor: getOrDefault(city.landscapeColor, '#eeeeee'),
         lightTextColor: getOrDefault(city.lightTextColor, '#dddddd'),
-        darkTextColor: getOrDefault(city.darkTextColor, '#777777')
+        darkTextColor: getOrDefault(city.darkTextColor, '#777777'),
+        dmsLng: gps.getDMSLongitude(city.lng),
+        dmsLat: gps.getDMSLatitude(city.lat)
     };
 }
 
