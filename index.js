@@ -19,7 +19,7 @@ const pupOptions = {
     defaultViewport: {
         width: 3600,
         height: 5400,
-        deviceScaleFactor: 0.5
+        deviceScaleFactor: 1
     }
 };
 
