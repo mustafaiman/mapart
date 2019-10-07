@@ -3,3 +3,4 @@
 demo-outputs/
 node_modules/
 .env
+*.log

@@ -10,7 +10,8 @@
     "lausanne": "node index.js -o demo-outputs/lausanne.png --city cities/lausanne.json",
     "ankara": "node index.js -o demo-outputs/ankara.png --city cities/ankara.json",
     "antalya": "node index.js -o demo-outputs/antalya.png --city cities/antalya.json",
-    "columbus": "node index.js -o demo-outputs/columbus.png --city cities/columbus.json"
+    "columbus": "node index.js -o demo-outputs/columbus.png --city cities/columbus.json",
+    "konya": "node index.js -o demo-outputs/konya.png --city cities/konya.json"
   },
   "author": "",
   "license": "ISC",
