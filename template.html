@@ -2,12 +2,14 @@
 <head>
     <link rel="stylesheet" type="text/css" href="style.css" />
     <script src="maps_api.js"></script>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css" rel="stylesheet" />
 </head>
 <body>
 <div id="page">
 <div id="whole-frame">
     <div id="map-frame">
-
     </div>
 </div>
     <div id="city-name" class="name"></div>
@@ -15,13 +17,9 @@
     <div id="long-lat" class="name"></div>
 </div>
 <script>
-    getApiKey().then(function (apiKey) {
-        var map_frame = document.getElementById('map-frame');
-        var js = document.createElement('script');
-        js.setAttribute('src', 'https://maps.googleapis.com/maps/api/js?key=' + apiKey + '&callback=initMap');
-        map_frame.appendChild(js);
-    });
-
+function emitMapLoaded() {
+    onMapLoaded();
+}
 </script>
 </body>
 </html>

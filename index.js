@@ -24,7 +24,7 @@ const pupOptions = {
 };
 
 function getApiKey() {
-    return process.env.MAPS_KEY;
+    return process.env.MAP_BOX_API_KEY;
 }
 
 function getOrDefault(param, defaultValue) {
@@ -37,10 +37,8 @@ function getOrDefault(param, defaultValue) {
 
 function getOptions() {
     return {
-        center: {
-            lat: city.lat,
-            lng: city.lng
-        },
+        lat: city.lat,
+        lng: city.lng,
         zoom: city.zoom,
         roadColor: getOrDefault(city.roadColor, '#c6c6c6'),
         waterColor: getOrDefault(city.waterColor, '#ffffff'),
@@ -54,13 +52,43 @@ function getOptions() {
     };
 }
 
+function initMap(mapLoadContext) {
+    mapboxgl.accessToken = mapLoadContext.accessToken;
+    options = mapLoadContext.options;
+    var map = new mapboxgl.Map({
+        container: 'map-frame', // container id
+        style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+        center: [options.lng, options.lat], // starting position [lng, lat]
+        zoom: options.zoom // starting zoom
+    });
+    map.on('load', emitMapLoaded); // emitMapLoaded is defined in template.html
+    document.getElementById('long-lat').innerText=options.dmsLat + ' ' + options.dmsLng;
+    document.getElementById('long-lat').style.color=options.lightTextColor;
+    document.getElementById('city-name').innerText=options.cityName;
+    document.getElementById('city-name').style.color=options.darkTextColor;
+    document.getElementById('state-name').innerText=options.stateName;
+    document.getElementById('state-name').style.color=options.darkTextColor;
+    document.getElementById('whole-frame').style.backgroundColor=options.waterColor;
+}
+
+function createMapLoadContext() {
+    return {
+        accessToken: getApiKey(),
+        options: getOptions()
+    };
+}
+
+async function onMapLoaded(page, browser) {
+    await page.screenshot({fullPage: true, path: outputPath});
+    await browser.close();
+}
+
 (async () => {
     const browser = await pup.launch(pupOptions);
     const page = await browser.newPage();
     await page.setUserAgent('maparter');
-    await page.exposeFunction('getApiKey', getApiKey);
-    await page.exposeFunction('getOptions', getOptions);
-    await page.goto(fullpath, { waitUntil: 'networkidle2'});
-    await page.screenshot({fullPage: true, path: outputPath});
-    await browser.close();
+    await page.exposeFunction('initMap', initMap);
+    await page.exposeFunction('onMapLoaded', onMapLoaded.bind(this, page, browser));
+    await page.goto(fullpath, { waitUntil: 'domcontentloaded'});
+    await page.evaluate(initMap, createMapLoadContext());
 })();
