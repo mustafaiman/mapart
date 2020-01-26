@@ -2,6 +2,8 @@ const pup = require('puppeteer');
 const path = require('path');
 const commander = require('commander');
 const gps = require('gps-util');
+const fs = require('fs');
+
 require('dotenv').config();
 
 commander.version('1.0.0')
@@ -57,9 +59,9 @@ function initMap(mapLoadContext) {
     options = mapLoadContext.options;
     var map = new mapboxgl.Map({
         container: 'map-frame', // container id
-        style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+        style: mapLoadContext.style,
         center: [options.lng, options.lat], // starting position [lng, lat]
-        zoom: options.zoom // starting zoom
+        zoom: options.zoom // starting zoom,
     });
     map.on('load', emitMapLoaded); // emitMapLoaded is defined in template.html
     document.getElementById('long-lat').innerText=options.dmsLat + ' ' + options.dmsLng;
@@ -72,9 +74,11 @@ function initMap(mapLoadContext) {
 }
 
 function createMapLoadContext() {
+    let stylejson = JSON.parse(fs.readFileSync('mapbox.json', 'utf8'));
     return {
         accessToken: getApiKey(),
-        options: getOptions()
+        options: getOptions(),
+        style: stylejson
     };
 }
 
