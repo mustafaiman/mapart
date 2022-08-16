@@ -1,5 +1,6 @@
 const pup = require('puppeteer');
 const path = require('path');
+const fs = require('fs');
 const commander = require('commander');
 const gps = require('gps-util');
 require('dotenv').config();
@@ -13,6 +14,8 @@ const fullpath = 'file:' + path.resolve('template.html');
 const city = require(path.resolve(commander.city));
 
 let outputPath = path.resolve(commander.out);
+let outputDir = path.dirname(commander.out);
+fs.mkdirSync(outputDir, { recursive: true});
 
 const pupOptions = {
     headless: true,
